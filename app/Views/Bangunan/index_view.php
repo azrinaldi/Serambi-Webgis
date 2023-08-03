@@ -49,7 +49,7 @@
                                             </button>
                                             <div class="dropdown-menu border border-2" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" href="<?= site_url($url.'/ubah/'.$row->bangunan_id) ?>">Ubah</a>
-                                                <a class="dropdown-item" href="#">Hapus</a>
+                                                <a class="dropdown-item" href="<?= site_url($url.'/delete/'.$row->bangunan_id) ?>">Hapus</a>
                                             </div>
                                         </div>
                                     </div>
@@ -76,10 +76,4 @@
 </div>
 <?= $this->endSection() ?>
 
-<?= $this->section('javascript') ?>
-<script>
-    let table1 = document.querySelector('#dt');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
-<?= $this->endSection() ?>
 

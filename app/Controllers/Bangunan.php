@@ -37,5 +37,11 @@ class Bangunan extends BaseController
         $BangunanModel -> save($this->request->getPost());
         return redirect()->to('Bangunan');
     }
+    public function delete($bangunan_id='')
+    {
+        $BangunanModel = new \App\Models\BangunanModel();
+        $BangunanModel -> delete($bangunan_id);
+        return redirect()->to('Bangunan');
+    }
 }
 
