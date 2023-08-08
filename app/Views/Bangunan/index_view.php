@@ -33,9 +33,8 @@
                             <th>Jenis</th>
                             <th>Status</th>
                             <th>Kondisi</th>
-                            <th>SAU</th>
-                            <th>SAL</th>
-                            <th style="max-width: 90px;">GeoJSON</th>
+                            <th>Saluran Air Minum</th>
+                            <th>Saluran Air Limbah</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +64,6 @@
                                 <td><?= $row->kondisi_id ?></td>
                                 <td><?= $row->sau_id ?></td>
                                 <td><?= $row->sal_id ?></td>
-                                <td class="text-truncate" style="max-width: 90px;"><?= $row->geojson ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

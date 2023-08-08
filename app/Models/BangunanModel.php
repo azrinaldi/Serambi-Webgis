@@ -14,7 +14,7 @@ class BangunanModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'bangunan_name', 'pemilik','bangunan_no','kk_jml','kk_name','imb','keterangan','warna','rukun_tetangga_id','jenis_id','status_id','kondisi_id','sau_id','sal_id','geojson','foto','created_at','updated_at'
+        'bangunan_name', 'pemilik','bangunan_no','kk_jml','kk_name','imb','keterangan','warna','rukun_tetangga_id','jenis_id','status_id','kondisi_id','sau_id','sal_id','geojson','foto','created_at','updated_at',
     ];
 
     // Dates
