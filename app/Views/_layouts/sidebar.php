@@ -30,10 +30,10 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="">Kecamatan</a>
+                                    <a href="/Kecamatan">Kecamatan</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="">Kelurahan</a>
+                                    <a href="/Kelurahan">Kelurahan</a>
                                 </li>
                             </ul>
                         </li>
@@ -45,10 +45,13 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="">[On Progress]</a>
+                                    <a href="/KepadatanPenduduk">Kepadatan Penduduk</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="">[On Progress]</a>
+                                    <a href="/OnProgress">Bedah Rumah</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="/OnProgress">DTKS</a>
                                 </li>
                             </ul>
                         </li>
@@ -60,10 +63,19 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="">[On Progress]</a>
+                                    <a href="/Jalan">Jalan</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="/Bangunan">Bangunan</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="/OnProgress">Drainase</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="/OnProgress">Areal Pertanian</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="/OnProgress">Pertokoan</a>
                                 </li>
                             </ul>
                         </li>
@@ -75,10 +87,16 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="">[On Progress]</a>
+                                    <a href="/PelangganPDAM">Pelanggan Air PDAM</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="">[On Progress]</a>
+                                    <a href="/OnProgress">Wisata</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="/OnProgress">UMKM</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="/OnProgress">Potensi Investasi</a>
                                 </li>
                             </ul>
                         </li>
