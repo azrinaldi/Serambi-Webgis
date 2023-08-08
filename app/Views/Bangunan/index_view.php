@@ -24,7 +24,6 @@
                     <thead class="text-center">
                         <tr">
                             <th width="50px">Aksi</th>
-                            <th>Nama Bangunan</th>
                             <th>Pemilik</th>
                             <th>No Bangunan</th>
                             <th>Jumlah KK</th>
@@ -35,6 +34,7 @@
                             <th>Kondisi</th>
                             <th>Saluran Air Minum</th>
                             <th>Saluran Air Limbah</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,7 +53,6 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td><?= $row->bangunan_name ?></td>
                                 <td><?= $row->pemilik ?></td>
                                 <td><?= $row->bangunan_no ?></td>
                                 <td><?= $row->kk_jml ?></td>
@@ -64,6 +63,7 @@
                                 <td><?= $row->kondisi_id ?></td>
                                 <td><?= $row->sau_id ?></td>
                                 <td><?= $row->sal_id ?></td>
+                                <td><?= $row->keterangan ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -72,6 +72,14 @@
         </div>
     </section>
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('javascript') ?>
+<script src="/mazer/assets/vendors/simple-datatables/simple-datatables.js"></script>
+<script>
+    // Simple Datatable
+    let table1 = document.querySelector('#table1');
+    let dataTable = new simpleDatatables.DataTable(table1);
+</script>
 <?= $this->endSection() ?>
 
 

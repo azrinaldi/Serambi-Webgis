@@ -3,11 +3,5 @@
 
 <script src="/mazer/assets/vendors/apexcharts/apexcharts.js"></script>
 <script src="/mazer/assets/js/pages/dashboard.js"></script>
-<script src="/mazer/assets/vendors/simple-datatables/simple-datatables.js"></script>
 <script src="/mazer/assets/js/mazer.js"></script>
-<script src="https://combinatronics.com/Sha256/Pristine/master/dist/pristine.js"></script>
-<script>
-    // Simple Datatable
-    let table1 = document.querySelector('#table1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
+

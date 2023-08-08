@@ -17,7 +17,11 @@
             </header>
             <?php include 'sidebar.php' ?>  
             <?= $this->renderSection('content') ?>
-            <?php include 'footer.php' ?>
+            <?php 
+            if ($title != 'Beranda') {
+                include 'footer.php';
+            }
+            ?>
         </div>
     </div>
     <?php include 'javascript.php' ?>

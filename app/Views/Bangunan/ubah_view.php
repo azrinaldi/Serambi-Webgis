@@ -98,12 +98,6 @@ if ($getData != null) {
                                     <?= input_text('sal_id', $sal_id ?? '') ?>
                                 </div>
                                 <div class="col-md-3">
-                                    <label>GeoJSON</label>
-                                </div>
-                                <div class="col-md-8 form-group">
-                                    <?= input_text('geojson', $geojson ?? '') ?>
-                                </div>
-                                <div class="col-md-3">
                                     <label>Foto Bangunan</label>
                                 </div>
                                 <div class="col-md-8 form-group">

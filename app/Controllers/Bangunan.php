@@ -21,13 +21,22 @@ class Bangunan extends BaseController
 
         return view('Bangunan/index_view', $data);
     }
+
     public function upload()
     {
-
-
         $shpFile = $this->request->getFile('shapefile-shp');
         $shxFile = $this->request->getFile('shapefile-shx');
         $dbfFile = $this->request->getFile('shapefile-dbf');
+
+        $shpExtension = $shpFile->getExtension();
+        $shxExtension = $shxFile->getExtension();
+        $dbfExtension = $dbfFile->getExtension();
+
+        if ($shpExtension != '.shp' or $shxExtension != '.shx' or $dbfExtension != '.dbf'
+        ) {
+            echo "File yang ditambahkan tidak sesuai";
+            return redirect()->to('Bangunan');
+        }
 
         $shpFilename = $shpFile->getName();
         $shxFilename = $shxFile->getName();
