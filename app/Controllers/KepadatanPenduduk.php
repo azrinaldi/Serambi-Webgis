@@ -28,13 +28,13 @@ class KepadatanPenduduk extends BaseController
         $shxFile = $this->request->getFile('shapefile-shx');
         $dbfFile = $this->request->getFile('shapefile-dbf');
 
-        $shpExtension = $shpFile->getExtension();
-        $shxExtension = $shxFile->getExtension();
-        $dbfExtension = $dbfFile->getExtension();
+        $shpExtension = $shpFile->getClientExtension();
+        $shxExtension = $shxFile->getClientExtension();
+        $dbfExtension = $dbfFile->getClientExtension();
 
-        if ($shpExtension != '.shp' or $shxExtension != '.shx' or $dbfExtension != '.dbf'
+        if ($shpExtension != 'shp' or $shxExtension != 'shx' or $dbfExtension != 'dbf'
         ) {
-            echo "File yang ditambahkan tidak sesuai";
+            session()->setFlashData(['info'=>'error', 'message'=>'Gagal mengimpor file']);
             return redirect()->to('KepadatanPenduduk');
         }
 
@@ -77,6 +77,7 @@ class KepadatanPenduduk extends BaseController
         unlink('./uploads/' . $shpFilename);
         unlink('./uploads/' . $shxFilename);
         unlink('./uploads/' . $dbfFilename);
+        session()->setFlashData(['info'=>'success', 'message'=>'Gagal mengimpor file']);
 
         return redirect()->to('KepadatanPenduduk');
     }
@@ -99,12 +100,14 @@ class KepadatanPenduduk extends BaseController
     {
         $KepadatanPendudukModel = new \App\Models\KepadatanPendudukModel();
         $KepadatanPendudukModel->save($this->request->getPost());
+        session()->setFlashData(['info'=>'success', 'message'=>'Data berhasil disimpan']);
         return redirect()->to('KepadatanPenduduk');
     }
     public function delete($jumlah_id = '')
     {
         $KepadatanPendudukModel = new \App\Models\KepadatanPendudukModel();
         $KepadatanPendudukModel->delete($jumlah_id);
+        session()->setFlashData(['info'=>'success', 'message'=>'Data berhasil dihapus']);
         return redirect()->to('KepadatanPenduduk');
     }
 }

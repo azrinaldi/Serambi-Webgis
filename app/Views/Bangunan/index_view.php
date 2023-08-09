@@ -48,7 +48,7 @@
                                             </button>
                                             <div class="dropdown-menu border border-2" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" href="<?= site_url($url.'/ubah/'.$row->bangunan_id) ?>">Ubah</a>
-                                                <a class="dropdown-item" href="<?= site_url($url.'/delete/'.$row->bangunan_id) ?>">Hapus</a>
+                                                <a class="dropdown-item" href="javascript:;" data-href=""<?= site_url($url.'/delete/'.$row->bangunan_id) ?>" onclick="deleteData(this)">Hapus</a>
                                             </div>
                                         </div>
                                     </div>

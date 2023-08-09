@@ -28,13 +28,13 @@ class PelangganPDAM extends BaseController
         $shxFile = $this->request->getFile('shapefile-shx');
         $dbfFile = $this->request->getFile('shapefile-dbf');
 
-        $shpExtension = $shpFile->getExtension();
-        $shxExtension = $shxFile->getExtension();
-        $dbfExtension = $dbfFile->getExtension();
+        $shpExtension = $shpFile->getClientExtension();
+        $shxExtension = $shxFile->getClientExtension();
+        $dbfExtension = $dbfFile->getClientExtension();
 
-        if ($shpExtension != '.shp' or $shxExtension != '.shx' or $dbfExtension != '.dbf'
+        if ($shpExtension != 'shp' or $shxExtension != 'shx' or $dbfExtension != 'dbf'
         ) {
-            echo "File yang ditambahkan tidak sesuai";
+            session()->setFlashData(['info'=>'error', 'message'=>'Gagal mengimpor file']);
             return redirect()->to('PelangganPDAM');
         }
 
@@ -62,18 +62,7 @@ class PelangganPDAM extends BaseController
                 }
                 $dataArray = $Geometry->getDataArray();
                 $data = [
-                    'pemilik' => $dataArray['PEMILIK'],
-                    'PelangganPDAM_no' => $dataArray['NO_RUMAH'],
-                    'kk_jml' => $dataArray['JUMLAH_KK'],
-                    'kk_name' => $dataArray['NAMA_KK'],
-                    'imb' => $dataArray['IMB'],
-                    'keterangan' => $dataArray['KETERANGAN'],
-                    'rukun_tetangga' => $dataArray['RT_ID'],
-                    'jenis_id' => $dataArray['JENIS_BGN'],
-                    'status_id' => $dataArray['STAT_RUMAH'],
-                    'kondisi_id' => $dataArray['KOND_RUMAH'],
-                    'sau_id' => $dataArray['SAU'],
-                    'sal_id' => $dataArray['SAL'],
+                    
                     'geojson' => $Geometry->getGeoJSON()
 
                 ];
@@ -88,6 +77,7 @@ class PelangganPDAM extends BaseController
         unlink('./uploads/' . $shpFilename);
         unlink('./uploads/' . $shxFilename);
         unlink('./uploads/' . $dbfFilename);
+        session()->setFlashData(['info'=>'success', 'message'=>'Gagal mengimpor file']);
 
         return redirect()->to('PelangganPDAM');
     }
@@ -110,12 +100,14 @@ class PelangganPDAM extends BaseController
     {
         $PelangganPDAMModel = new \App\Models\PelangganPDAMModel();
         $PelangganPDAMModel->save($this->request->getPost());
+        session()->setFlashData(['info'=>'success', 'message'=>'Data berhasil disimpan']);
         return redirect()->to('PelangganPDAM');
     }
     public function delete($jml_pel_id = '')
     {
         $PelangganPDAMModel = new \App\Models\PelangganPDAMModel();
         $PelangganPDAMModel->delete($jml_pel_id);
+        session()->setFlashData(['info'=>'success', 'message'=>'Data berhasil dihapus']);
         return redirect()->to('PelangganPDAM');
     }
 }
