@@ -35,6 +35,7 @@
                             <th>Saluran Air Minum</th>
                             <th>Saluran Air Limbah</th>
                             <th>Keterangan</th>
+                            <th>GeoJSON</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,6 +65,7 @@
                                 <td><?= $row->sau_id ?></td>
                                 <td><?= $row->sal_id ?></td>
                                 <td><?= $row->keterangan ?></td>
+                                <td class="text-truncate" style="max-width: 150px;"><?= $row->geojson ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

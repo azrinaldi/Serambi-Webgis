@@ -88,7 +88,7 @@ class Bangunan extends BaseController
         unlink('./uploads/' . $shpFilename);
         unlink('./uploads/' . $shxFilename);
         unlink('./uploads/' . $dbfFilename);
-        session()->setFlashData(['info'=>'success', 'message'=>'Gagal mengimpor file']);
+        session()->setFlashData(['info'=>'success', 'message'=>'Berhasil mengimpor file']);
         return redirect()->to('Bangunan');
     }
 
