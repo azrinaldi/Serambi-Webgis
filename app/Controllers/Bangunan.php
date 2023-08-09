@@ -117,6 +117,7 @@ class Bangunan extends BaseController
     {
         $BangunanModel = new \App\Models\BangunanModel();
         $BangunanModel->delete($bangunan_id);
+        session()->setFlashData(['info'=>'success', 'message'=>'Data berhasil dihapus']);
         return redirect()->to('Bangunan');
     }
 }
