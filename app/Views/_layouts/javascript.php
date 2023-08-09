@@ -6,6 +6,7 @@
 <script src="/mazer/assets/js/mazer.js"></script>
 <script src="/mazer/assets/js/extensions/sweetalert2.js"></script>
 <script src="/mazer/assets/vendors/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <script>
     <?php
