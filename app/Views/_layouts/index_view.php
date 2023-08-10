@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <?php include 'head.php' ?>
     <?= $this->renderSection('style') ?>
 </head>
 
 <body>
-    <div id="app">
-        
+    <div id="app">  
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
@@ -24,8 +22,8 @@
             ?>
         </div>
     </div>
-    <?php include 'javascript.php' ?>
     <?= $this->renderSection('javascript') ?>
+    <?php include 'javascript.php' ?>
 </body>
 
 </html>

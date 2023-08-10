@@ -11,10 +11,4 @@ class Home extends BaseController
         $data['getData'] = $BangunanModel->findAll();
         return view('Home/index_view', $data);
     }
-    public function tampilkan_bangunan(){
-        $data['title'] = 'Beranda';
-        $BangunanModel = new \App\Models\BangunanModel();
-        $data['getData'] = $BangunanModel->findAll();
-        return view('Home/index_view', $data);   
-    }
 }

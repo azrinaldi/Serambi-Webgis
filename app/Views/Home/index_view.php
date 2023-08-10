@@ -38,15 +38,12 @@
         "Google Map": googleStreets,
         "OpenStreetMap": osm
     };
-        
-        <?php foreach ($getData as $value) : ?>
-            var geojsonFeature = <?= $value->geojson ?>;
-            var bangunan = L.geoJSON(geojsonFeature).addTo(map);
-        <?php endforeach ?>
-        var overlays = {
-            "Marker" :singleMarker,
-            "PolygonData": bangunan
-        };
-        L.control.layers(baseLayers, overlays).addTo(map);
+
+    var geojsonFeature = [<?php foreach ($getData as $value) : ?><?= $value->geojson ?>,<?php endforeach ?>];
+    var bangunan = L.geoJSON(geojsonFeature).addTo(map);
+    var overlays = {
+        "Layer Bangunan": bangunan
+    };
+    L.control.layers(baseLayers, overlays).addTo(map);
 </script>
 <?= $this->endSection() ?>
