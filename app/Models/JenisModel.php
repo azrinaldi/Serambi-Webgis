@@ -14,12 +14,12 @@ class JenisModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'jenis_id','jenis_name','jenis_fungsi'
+        'jenis_id','jenis_name','jenis_fungsi', 'jenis_kode'
     ];
-    public function getJenisIdByName($jenis_name)
+    public function getJenisIdByKode($jenis_kode)
     {
         $query = $this->select('jenis_id')
-            ->where('jenis_name', $jenis_name)
+            ->where('jenis_kode', $jenis_kode)
             ->get();
 
         $result = $query->getRow();

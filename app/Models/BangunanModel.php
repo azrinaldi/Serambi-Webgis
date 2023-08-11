@@ -40,17 +40,5 @@ class BangunanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    
-    public function getJenisIdByName($jenisName)
-    {
-        $query = $this->db->table('mstr_jenis')
-            ->select('jenis_id')
-            ->where('jenis_name', $jenisName)
-            ->get();
-
-        $result = $query->getRow();
-
-        return ($result) ? $result->jenis_id : null;
-    }
 
 }

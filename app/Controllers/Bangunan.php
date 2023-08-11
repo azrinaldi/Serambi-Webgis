@@ -64,13 +64,13 @@ class Bangunan extends BaseController
                     continue;
                 }
                 $dataArray = $Geometry->getDataArray();
-                $jenis_name = $dataArray['JENIS_BGN'];
+                $jenis_kode = $dataArray['JENIS_BGN'];
                 $jenisModel = new \App\Models\JenisModel();
-                $jenis_id = $jenisModel->getJenisIdByName($jenis_name);
+                $jenis_id = $jenisModel->getJenisIdByKode($jenis_kode);
                 if ($jenis_id === null) {
-                    $jenis_id = 0;
+                    $jenis_id = 17;
                 }
-                //print_r($dataArray);
+                
                 $data = [
                     'pemilik' => $dataArray['PEMILIK'],
                     'bangunan_no' => $dataArray['NO_RUMAH'],
@@ -99,6 +99,7 @@ class Bangunan extends BaseController
         unlink('./uploads/' . $shxFilename);
         unlink('./uploads/' . $dbfFilename);
         session()->setFlashData(['info' => 'success', 'message' => 'Berhasil mengimpor file']);
+        
         return redirect()->to('Bangunan');
     }
 
