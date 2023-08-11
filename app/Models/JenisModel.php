@@ -4,18 +4,28 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BangunanModel extends Model
+class JenisModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'infra_bangunan';
-    protected $primaryKey       = 'bangunan_id';
+    protected $table            = 'mstr_jenis';
+    protected $primaryKey       = 'jenis_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'bangunan_name', 'pemilik','bangunan_no','kk_jml','kk_name','imb','keterangan','warna','rukun_tetangga_id','jenis_id','status_id','kondisi_id','sau_id','sal_id','geojson','foto','created_at','updated_at',
+        'jenis_id','jenis_name','jenis_fungsi'
     ];
+    public function getJenisIdByName($jenisName)
+    {
+        $query = $this->select('jenis_id')
+            ->where('jenis_name', $jenisName)
+            ->get();
+
+        $result = $query->getRow();
+
+        return ($result) ? $result->jenis_id : null;
+    }
 
     // Dates
     protected $useTimestamps = true;
@@ -40,17 +50,4 @@ class BangunanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    
-    public function getJenisIdByName($jenisName)
-    {
-        $query = $this->db->table('mstr_jenis')
-            ->select('jenis_id')
-            ->where('jenis_name', $jenisName)
-            ->get();
-
-        $result = $query->getRow();
-
-        return ($result) ? $result->jenis_id : null;
-    }
-
 }

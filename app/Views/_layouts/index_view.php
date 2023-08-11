@@ -22,8 +22,8 @@
             ?>
         </div>
     </div>
-    <?= $this->renderSection('javascript') ?>
     <?php include 'javascript.php' ?>
+    <?= $this->renderSection('javascript') ?>
 </body>
 
 </html>

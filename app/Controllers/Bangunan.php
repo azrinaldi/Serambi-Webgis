@@ -32,9 +32,10 @@ class Bangunan extends BaseController
         $shxExtension = $shxFile->getClientExtension();
         $dbfExtension = $dbfFile->getClientExtension();
 
-        if ($shpExtension != 'shp' or $shxExtension != 'shx' or $dbfExtension != 'dbf'
+        if (
+            $shpExtension != 'shp' or $shxExtension != 'shx' or $dbfExtension != 'dbf'
         ) {
-            session()->setFlashData(['info'=>'error', 'message'=>'Gagal mengimpor file']);
+            session()->setFlashData(['info' => 'error', 'message' => 'Gagal mengimpor file']);
             return redirect()->to('Bangunan');
         }
 
@@ -61,6 +62,13 @@ class Bangunan extends BaseController
                     continue;
                 }
                 $dataArray = $Geometry->getDataArray();
+                $jenis_name = $dataArray['JENIS_BGN'];
+                $jenisModel = new \App\Models\JenisModel();
+                $jenis_id = $jenisModel->getJenisIdByName($jenis_name);
+                if ($jenis_id === null) {
+                    $jenis_id = 0;
+                }
+                //print_r($dataArray);
                 $data = [
                     'pemilik' => $dataArray['PEMILIK'],
                     'bangunan_no' => $dataArray['NO_RUMAH'],
@@ -69,7 +77,7 @@ class Bangunan extends BaseController
                     'imb' => $dataArray['IMB'],
                     'keterangan' => $dataArray['KETERANGAN'],
                     'rukun_tetangga' => $dataArray['RT_ID'],
-                    'jenis_id' => $dataArray['JENIS_BGN'],
+                    'jenis_id' => $jenis_id,
                     'status_id' => $dataArray['STAT_RUMAH'],
                     'kondisi_id' => $dataArray['KOND_RUMAH'],
                     'sau_id' => $dataArray['SAU'],
@@ -88,7 +96,7 @@ class Bangunan extends BaseController
         unlink('./uploads/' . $shpFilename);
         unlink('./uploads/' . $shxFilename);
         unlink('./uploads/' . $dbfFilename);
-        session()->setFlashData(['info'=>'success', 'message'=>'Berhasil mengimpor file']);
+        session()->setFlashData(['info' => 'success', 'message' => 'Berhasil mengimpor file']);
         return redirect()->to('Bangunan');
     }
 
@@ -110,14 +118,14 @@ class Bangunan extends BaseController
     {
         $BangunanModel = new \App\Models\BangunanModel();
         $BangunanModel->save($this->request->getPost());
-        session()->setFlashData(['info'=>'success', 'message'=>'Data berhasil disimpan']);
+        session()->setFlashData(['info' => 'success', 'message' => 'Data berhasil disimpan']);
         return redirect()->to('Bangunan');
     }
     public function delete($bangunan_id = '')
     {
         $BangunanModel = new \App\Models\BangunanModel();
         $BangunanModel->delete($bangunan_id);
-        session()->setFlashData(['info'=>'success', 'message'=>'Data berhasil dihapus']);
+        session()->setFlashData(['info' => 'success', 'message' => 'Data berhasil dihapus']);
         return redirect()->to('Bangunan');
     }
 }

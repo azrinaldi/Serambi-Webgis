@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BangunanModel extends Model
+class UserModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'infra_bangunan';
-    protected $primaryKey       = 'bangunan_id';
+    protected $table            = 'users';
+    protected $primaryKey       = 'user_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'bangunan_name', 'pemilik','bangunan_no','kk_jml','kk_name','imb','keterangan','warna','rukun_tetangga_id','jenis_id','status_id','kondisi_id','sau_id','sal_id','geojson','foto','created_at','updated_at',
+        'username','password','email','full_name','phone','level_id','last_login','photo'
     ];
 
     // Dates
@@ -40,17 +40,4 @@ class BangunanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    
-    public function getJenisIdByName($jenisName)
-    {
-        $query = $this->db->table('mstr_jenis')
-            ->select('jenis_id')
-            ->where('jenis_name', $jenisName)
-            ->get();
-
-        $result = $query->getRow();
-
-        return ($result) ? $result->jenis_id : null;
-    }
-
 }

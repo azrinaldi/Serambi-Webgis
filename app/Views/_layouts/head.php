@@ -14,8 +14,8 @@
 <link rel="stylesheet" href="/mazer/assets/vendors/bootstrap-icons/bootstrap-icons.css">
 <link rel="stylesheet" href="/mazer/assets/css/app.css">
 <link rel="shortcut icon" href="/mazer/assets/images/favicon.svg" type="image/x-icon">
-
-<link rel="stylesheet" href="assets/vendors/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="/mazer/assets/css/pages/auth.css">
+<link rel="stylesheet" href="/mazer/assets/vendors/sweetalert2/sweetalert2.min.css">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
