@@ -3,8 +3,8 @@
 <?= $this->section('content') ?>
 
 <?php
-if ($getData != null) {
-    extract($getData);
+if ($getDataKecamatan != null) {
+    extract($getDataKecamatan);
 }
 ?>
 <div class="page-heading">

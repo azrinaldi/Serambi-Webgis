@@ -39,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($getData as $row) :    ?>
+                        <?php foreach ($getDataBangunan as $row) :    ?>
                             <tr>
                                 <td>
                                     <div class="btn-group mb-1">

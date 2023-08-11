@@ -8,7 +8,9 @@ class Home extends BaseController
     {
         $data['title'] = 'Beranda';
         $BangunanModel = new \App\Models\BangunanModel();
-        $data['getData'] = $BangunanModel->findAll();
+        $data['getDataBangunan'] = $BangunanModel->findAll();
+        $KecamatanModel = new \App\Models\KecamatanModel();
+        $data['getDataKecamatan'] = $KecamatanModel->findAll();
         return view('Home/index_view', $data);
     }
 }

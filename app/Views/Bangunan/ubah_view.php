@@ -6,8 +6,8 @@
 
 use Kint\Zval\Value;
 
-if ($getData != null) {
-    extract($getData);
+if ($getDataBangunan != null) {
+    extract($getDataBangunan);
 }
 ?>
 <div class="page-heading">

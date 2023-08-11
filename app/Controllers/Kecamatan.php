@@ -17,7 +17,7 @@ class Kecamatan extends BaseController
         $data['url'] = $this->url;
         $data['page'] = 'Data ' . $this->title;
         $KecamatanModel = new \App\Models\KecamatanModel();
-        $data['getData'] = $KecamatanModel->findAll();
+        $data['getDataKecamatan'] = $KecamatanModel->findAll();
 
         return view('Kecamatan/index_view', $data);
     }
@@ -88,11 +88,11 @@ class Kecamatan extends BaseController
         $data['title'] = $this->title;
         $data['url'] = $this->url;
         if ($kecamatan_id != '') {
-            $getData = $KecamatanModel->asArray()->find($kecamatan_id);
+            $getDataKecamatan = $KecamatanModel->asArray()->find($kecamatan_id);
         } else {
-            $getData =  null;
+            $getDataKecamatan =  null;
         }
-        $data['getData'] = $getData;
+        $data['getDataKecamatan'] = $getDataKecamatan;
         $data['page'] = 'Ubah Data ' . $this->title;
         return view('Kecamatan/ubah_view', $data);
     }

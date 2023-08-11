@@ -17,7 +17,7 @@ class Bangunan extends BaseController
         $data['url'] = $this->url;
         $data['page'] = 'Data ' . $this->title;
         $BangunanModel = new \App\Models\BangunanModel();
-        $data['getData'] = $BangunanModel->findAll();
+        $data['getDataBangunan'] = $BangunanModel->findAll();
         $JenisModel = new \App\Models\JenisModel();
         $data['JenisModel'] = $JenisModel;
 
@@ -109,11 +109,11 @@ class Bangunan extends BaseController
         $data['title'] = $this->title;
         $data['url'] = $this->url;
         if ($bangunan_id != '') {
-            $getData = $BangunanModel->asArray()->find($bangunan_id);
+            $getDataBangunan = $BangunanModel->asArray()->find($bangunan_id);
         } else {
-            $getData =  null;
+            $getDataBangunan =  null;
         }
-        $data['getData'] = $getData;
+        $data['getDataBangunan'] = $getDataBangunan;
         $data['page'] = 'Ubah Data ' . $this->title;
         return view('Bangunan/ubah_view', $data);
     }

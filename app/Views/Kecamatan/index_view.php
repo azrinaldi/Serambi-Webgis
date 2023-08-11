@@ -24,15 +24,15 @@
                     <thead class="text-center">
                         <tr">
                             <th width="50px">Aksi</th>
+                            <th>Id Kecamatan</th>
                             <th>Nama</th>
                             <th>Luas</th>
-                            <th>Pusat</th>
                             <th>Jarak ke Pusat</th>
                             <th>Alamat</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($getData as $row) :    ?>
+                        <?php foreach ($getDataKecamatan as $row) :    ?>
                             <tr>
                                 <td>
                                     <div class="btn-group mb-1">
@@ -47,11 +47,11 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td><?= $row->kecamatan_id ?></td>
                                 <td><?= $row->kecamatan_name ?></td>
                                 <td><?= $row->kecamatan_luas ?></td>
-                                <td><?= $row->pusat ?></td>
                                 <td><?= $row->jarak_pusat ?></td>
-                                <td><?= $row->alamat ?></td>
+                                <td class="text-truncate" style="max-width: 150px;"><?= $row->geojson ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
