@@ -59,7 +59,7 @@
                                 <td><?= $row->kk_jml ?></td>
                                 <td><?= $row->kk_name ?></td>
                                 <td><?= $row->imb ?></td>
-                                <td><?= $row->jenis_id ?></td>
+                                <td><?= $JenisModel->getJenisNameById($row->jenis_id) ?></td>
                                 <td><?= $row->status_id ?></td>
                                 <td><?= $row->kondisi_id ?></td>
                                 <td><?= $row->sau_id ?></td>

@@ -16,15 +16,25 @@ class JenisModel extends Model
     protected $allowedFields    = [
         'jenis_id','jenis_name','jenis_fungsi'
     ];
-    public function getJenisIdByName($jenisName)
+    public function getJenisIdByName($jenis_name)
     {
         $query = $this->select('jenis_id')
-            ->where('jenis_name', $jenisName)
+            ->where('jenis_name', $jenis_name)
             ->get();
 
         $result = $query->getRow();
 
         return ($result) ? $result->jenis_id : null;
+    }
+    public function getJenisNameById($jenis_id)
+    {
+        $query = $this->select('jenis_name')
+            ->where('jenis_id', $jenis_id)
+            ->get();
+
+        $result = $query->getRow();
+
+        return ($result) ? $result->jenis_name : null;
     }
 
     // Dates

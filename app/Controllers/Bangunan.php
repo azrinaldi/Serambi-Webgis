@@ -18,6 +18,8 @@ class Bangunan extends BaseController
         $data['page'] = 'Data ' . $this->title;
         $BangunanModel = new \App\Models\BangunanModel();
         $data['getData'] = $BangunanModel->findAll();
+        $JenisModel = new \App\Models\JenisModel();
+        $data['JenisModel'] = $JenisModel;
 
         return view('Bangunan/index_view', $data);
     }
