@@ -19,7 +19,17 @@ class Bangunan extends BaseController
         $BangunanModel = new \App\Models\BangunanModel();
         $data['getDataBangunan'] = $BangunanModel->findAll();
         $JenisModel = new \App\Models\JenisModel();
+        $RTModel = new \App\Models\RTModel();
+        $data['RTModel'] = $RTModel;
         $data['JenisModel'] = $JenisModel;
+        $KondisiModel = new \App\Models\KondisiModel();
+        $data['KondisiModel'] = $KondisiModel;
+        $StatusModel = new \App\Models\StatusModel();
+        $data['StatusModel'] = $StatusModel;
+        $SAUModel = new \App\Models\SAUModel();
+        $data['SAUModel'] = $SAUModel;
+        $SALModel = new \App\Models\SALModel();
+        $data['SALModel'] = $SALModel;
 
         return view('Bangunan/index_view', $data);
     }
@@ -64,12 +74,44 @@ class Bangunan extends BaseController
                     continue;
                 }
                 $dataArray = $Geometry->getDataArray();
+
                 $jenis_kode = $dataArray['JENIS_BGN'];
                 $jenisModel = new \App\Models\JenisModel();
                 $jenis_id = $jenisModel->getJenisIdByKode($jenis_kode);
                 if ($jenis_id === null) {
                     $jenis_id = 17;
                 }
+                $kondisi_name = $dataArray['KOND_RUMAH'];
+                $kondisiModel = new \App\Models\KondisiModel();
+                $kondisi_id = $kondisiModel->getKondisiIdByName($kondisi_name);
+                if ($kondisi_id === null) {
+                    $kondisi_id = 0;
+                }
+                $sal_name = $dataArray['SAL'];
+                $salModel = new \App\Models\SalModel();
+                $sal_id = $salModel->getSalIdByName($sal_name);
+                if($sal_id === '-'){
+                    $sal_id = 6;
+                }
+                if ($sal_id === null) {
+                    $sal_id = 7;
+                }
+                $sau_name = $dataArray['SAU'];
+                $sauModel = new \App\Models\SauModel();
+                $sau_id = $sauModel->getSauIdByName($sau_name);
+                if($sau_id === '-'){
+                    $sau_id = 4;
+                }
+                if ($sau_id === null) {
+                    $sau_id = 5;
+                }
+                $status_kode = $dataArray['STAT_RUMAH'];
+                $statusModel = new \App\Models\StatusModel();
+                $status_id = $statusModel->getStatusIdByKode($status_kode);
+                if ($status_id === null) {
+                    $status_id = 9;
+                }
+
                 
                 $data = [
                     'pemilik' => $dataArray['PEMILIK'],
@@ -78,12 +120,12 @@ class Bangunan extends BaseController
                     'kk_name' => $dataArray['NAMA_KK'],
                     'imb' => $dataArray['IMB'],
                     'keterangan' => $dataArray['KETERANGAN'],
-                    'rukun_tetangga' => $dataArray['RT_ID'],
+                    'rukun_tetangga_id' => $dataArray['RT_ID'],
                     'jenis_id' => $jenis_id,
-                    'status_id' => $dataArray['STAT_RUMAH'],
-                    'kondisi_id' => $dataArray['KOND_RUMAH'],
-                    'sau_id' => $dataArray['SAU'],
-                    'sal_id' => $dataArray['SAL'],
+                    'status_id' => $status_id,
+                    'kondisi_id' => $kondisi_id,
+                    'sau_id' => $sau_id,
+                    'sal_id' => $sal_id,
                     'geojson' => $Geometry->getGeoJSON()
 
                 ];

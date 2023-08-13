@@ -26,16 +26,16 @@
                             <th width="50px">Aksi</th>
                             <th>Pemilik</th>
                             <th>No Bangunan</th>
+                            <th>RT</th>
                             <th>Jumlah KK</th>
                             <th>Nama KK</th>
                             <th>IMB</th>
                             <th>Jenis</th>
                             <th>Status</th>
                             <th>Kondisi</th>
-                            <th>Saluran Air Minum</th>
-                            <th>Saluran Air Limbah</th>
+                            <th>Sarana Air Minum</th>
+                            <th>Sarana Air Limbah</th>
                             <th>Keterangan</th>
-                            <th>GeoJSON</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,17 +55,17 @@
                                     </div>
                                 </td>
                                 <td><?= $row->pemilik ?></td>
-                                <td><?= $row->bangunan_no ?></td>
+                                <td><?= $row->bangunan_no ?></td> 
+                                <td><?= $RTModel->getRTNameById($row->rukun_tetangga_id) ?></td>
                                 <td><?= $row->kk_jml ?></td>
                                 <td><?= $row->kk_name ?></td>
                                 <td><?= $row->imb ?></td>   
                                 <td><?= $JenisModel->getJenisNameById($row->jenis_id) ?></td>
-                                <td><?= $row->status_id ?></td>
-                                <td><?= $row->kondisi_id ?></td>
-                                <td><?= $row->sau_id ?></td>
-                                <td><?= $row->sal_id ?></td>
+                                <td><?= $StatusModel->getStatusNameById($row->status_id) ?></td>
+                                <td><?= $KondisiModel->getKondisiNameById($row->kondisi_id) ?></td>
+                                <td><?= $SAUModel->getSauNameById($row->sau_id) ?></td>
+                                <td><?= $SALModel->getSalNameById($row->sal_id) ?></td>
                                 <td><?= $row->keterangan ?></td>
-                                <td class="text-truncate" style="max-width: 150px;"><?= $row->geojson ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
