@@ -34,7 +34,6 @@ $routes->get('/', 'Home::index');
 $routes->get('upload', 'Bangunan::upload');          // Add this line.
 $routes->post('Bangunan/upload', 'Bangunan::upload');
 
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing

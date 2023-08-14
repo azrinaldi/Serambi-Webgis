@@ -90,7 +90,7 @@ class Bangunan extends BaseController
                 $sal_name = $dataArray['SAL'];
                 $salModel = new \App\Models\SalModel();
                 $sal_id = $salModel->getSalIdByName($sal_name);
-                if($sal_id === '-'){
+                if ($sal_id === '-') {
                     $sal_id = 6;
                 }
                 if ($sal_id === null) {
@@ -99,7 +99,7 @@ class Bangunan extends BaseController
                 $sau_name = $dataArray['SAU'];
                 $sauModel = new \App\Models\SauModel();
                 $sau_id = $sauModel->getSauIdByName($sau_name);
-                if($sau_id === '-'){
+                if ($sau_id === '-') {
                     $sau_id = 4;
                 }
                 if ($sau_id === null) {
@@ -112,7 +112,7 @@ class Bangunan extends BaseController
                     $status_id = 9;
                 }
 
-                
+
                 $data = [
                     'pemilik' => $dataArray['PEMILIK'],
                     'bangunan_no' => $dataArray['NO_RUMAH'],
@@ -141,7 +141,7 @@ class Bangunan extends BaseController
         unlink('./uploads/' . $shxFilename);
         unlink('./uploads/' . $dbfFilename);
         session()->setFlashData(['info' => 'success', 'message' => 'Berhasil mengimpor file']);
-        
+
         return redirect()->to('Bangunan');
     }
 
@@ -171,6 +171,30 @@ class Bangunan extends BaseController
         $BangunanModel = new \App\Models\BangunanModel();
         $BangunanModel->delete($bangunan_id);
         session()->setFlashData(['info' => 'success', 'message' => 'Data berhasil dihapus']);
+        return redirect()->to('Bangunan');
+    }
+    public function delete_selected()
+    {
+        $selectedItems = $this->request->getPost('selected_items');
+        $selectAll = $this->request->getPost('select_all');
+
+        if ($selectAll) {
+            // Fetch all bangunan_ids from your database and assign them to $selectedItems
+            $BangunanModel = new \App\Models\BangunanModel();
+            $allBangunanIds = $BangunanModel->findAll();
+            $selectedItems = array_column($allBangunanIds, 'bangunan_id');
+        }
+
+        if (empty($selectedItems)) {
+            session()->setFlashData(['info' => 'error', 'message' => 'Tidak ada item yang dipilih untuk dihapus']);
+        } else {
+            $BangunanModel = new \App\Models\BangunanModel();
+            foreach ($selectedItems as $bangunan_id) {
+                $BangunanModel->delete($bangunan_id);
+            }
+            session()->setFlashData(['info' => 'success', 'message' => 'Data Berhasil Dihapus']);
+        }
+
         return redirect()->to('Bangunan');
     }
 }

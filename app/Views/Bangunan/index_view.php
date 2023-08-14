@@ -20,56 +20,66 @@
                 <?php include 'modal_form.php' ?>
             </div>
             <div class="card-body">
-                <table class="table table-striped" id="table1">
-                    <thead class="text-center">
-                        <tr">
-                            <th width="50px">Aksi</th>
-                            <th>Pemilik</th>
-                            <th>No Bangunan</th>
-                            <th>RT</th>
-                            <th>Jumlah KK</th>
-                            <th>Nama KK</th>
-                            <th>IMB</th>
-                            <th>Jenis</th>
-                            <th>Status</th>
-                            <th>Kondisi</th>
-                            <th>Sarana Air Minum</th>
-                            <th>Sarana Air Limbah</th>
-                            <th>Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($getDataBangunan as $row) :    ?>
+                <form action="<?= base_url('Bangunan/delete_selected') ?>" method="post">
+                    <table class="table table-striped" id="table1">
+                        <thead class="text-center">
                             <tr>
-                                <td>
-                                    <div class="btn-group mb-1">
-                                        <div class="dropdown">
-                                            <button class="btn btn-success dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Aksi
-                                            </button>
-                                            <div class="dropdown-menu border border-2" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="<?= site_url($url.'/ubah/'.$row->bangunan_id) ?>">Ubah</a>
-                                                <a class="dropdown-item" href="javascript:;" data-href="<?= site_url($url.'/delete/'.$row->bangunan_id) ?>" onclick="deleteData(this)">Hapus</a>
+                                <th width="40px">
+                                    <input type="checkbox" id="select-all">
+                                </th>
+                                <th width="50px">Aksi</th>
+                                <th>Pemilik</th>
+                                <th>No Bangunan</th>
+                                <th>RT</th>
+                                <th>Jumlah KK</th>
+                                <th>Nama KK</th>
+                                <th>IMB</th>
+                                <th>Jenis</th>
+                                <th>Status</th>
+                                <th>Kondisi</th>
+                                <th>Sarana Air Minum</th>
+                                <th>Sarana Air Limbah</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($getDataBangunan as $row) :    ?>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="selected_items[]" value="<?= $row->bangunan_id ?>">
+                                    </td>
+                                    <td>
+                                        <div class="btn-group mb-1">
+                                            <div class="dropdown">
+                                                <button class="btn btn-success dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Aksi
+                                                </button>
+                                                <div class="dropdown-menu border border-2" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="<?= site_url($url . '/ubah/' . $row->bangunan_id) ?>">Ubah</a>
+                                                    <a class="dropdown-item" href="javascript:;" data-href="<?= site_url($url . '/delete/' . $row->bangunan_id) ?>" onclick="deleteData(this)">Hapus</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td><?= $row->pemilik ?></td>
-                                <td><?= $row->bangunan_no ?></td> 
-                                <td><?= $RTModel->getRTNameById($row->rukun_tetangga_id) ?></td>
-                                <td><?= $row->kk_jml ?></td>
-                                <td><?= $row->kk_name ?></td>
-                                <td><?= $row->imb ?></td>   
-                                <td><?= $JenisModel->getJenisNameById($row->jenis_id) ?></td>
-                                <td><?= $StatusModel->getStatusNameById($row->status_id) ?></td>
-                                <td><?= $KondisiModel->getKondisiNameById($row->kondisi_id) ?></td>
-                                <td><?= $SAUModel->getSauNameById($row->sau_id) ?></td>
-                                <td><?= $SALModel->getSalNameById($row->sal_id) ?></td>
-                                <td><?= $row->keterangan ?></td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                                    </td>
+                                    <td><?= $row->pemilik ?></td>
+                                    <td><?= $row->bangunan_no ?></td>
+                                    <td><?= $RTModel->getRTNameById($row->rukun_tetangga_id) ?></td>
+                                    <td><?= $row->kk_jml ?></td>
+                                    <td><?= $row->kk_name ?></td>
+                                    <td><?= $row->imb ?></td>
+                                    <td><?= $JenisModel->getJenisNameById($row->jenis_id) ?></td>
+                                    <td><?= $StatusModel->getStatusNameById($row->status_id) ?></td>
+                                    <td><?= $KondisiModel->getKondisiNameById($row->kondisi_id) ?></td>
+                                    <td><?= $SAUModel->getSauNameById($row->sau_id) ?></td>
+                                    <td><?= $SALModel->getSalNameById($row->sal_id) ?></td>
+                                    <td><?= $row->keterangan ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <input type="hidden" name="select_all" id="select-all-hidden">
+                    <button type="submit" class="btn btn-danger">Delete Selected</button>
+                </form>
             </div>
         </div>
     </section>
@@ -81,7 +91,19 @@
     // Simple Datatable
     let table1 = document.querySelector('#table1');
     let dataTable = new simpleDatatables.DataTable(table1);
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const selectAllCheckbox = document.getElementById("select-all");
+        const selectAllHiddenInput = document.getElementById("select-all-hidden");
+        const checkboxes = document.querySelectorAll("input[name='selected_items[]']");
+
+        selectAllCheckbox.addEventListener("change", function() {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+            selectAllHiddenInput.value = selectAllCheckbox.checked ? '1' : '';
+        });
+    });
 </script>
+
 <?= $this->endSection() ?>
-
-

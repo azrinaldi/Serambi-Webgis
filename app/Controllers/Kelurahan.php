@@ -63,6 +63,10 @@ class Kelurahan extends BaseController
                 $dataArray = $Geometry->getDataArray();
                 $data = [
                     
+                    ############################################################################################
+                    //Tambahkan penginputan data dari dataArray ke database
+                    ############################################################################################
+                    
                     'geojson' => $Geometry->getGeoJSON()
 
                 ];
