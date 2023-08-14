@@ -101,7 +101,6 @@
                             <a href="/OnProgress">Potensi Investasi</a>
                         </li>
                     </ul>
-                
                 <li class="sidebar-item d-flex justify-content-center">
                     <form action="<?= base_url('auth/logout') ?>" method="post">
                         <button type="submit" class="btn btn-danger"><i class="bi bi-box-arrow-left"></i>  Logout</button>
