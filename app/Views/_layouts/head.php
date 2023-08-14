@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/mazer/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
 <link rel="stylesheet" href="/mazer/assets/vendors/bootstrap-icons/bootstrap-icons.css">
 <link rel="stylesheet" href="/mazer/assets/css/app.css">
-<link rel="shortcut icon" href="/mazer/assets/images/favicon.svg" type="image/x-icon">
+<link rel="shortcut icon" href="<?php echo base_url('images/logo.png'); ?>" type="image/x-icon">
 <link rel="stylesheet" href="/mazer/assets/css/pages/auth.css">
 <link rel="stylesheet" href="/mazer/assets/vendors/sweetalert2/sweetalert2.min.css">
 
